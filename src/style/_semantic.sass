@@ -1,0 +1,23 @@
+.flex
+  display: flex
+
+.flex-1
+  flex: 1
+
+.flex-center
+  align-items: center
+
+.flex-space-between
+  justify-content: space-between
+
+.flex-space-around
+  justify-content: space-around
+
+@mixin clearfix()
+  &::after
+    display: block
+    clear: both
+    content: ""
+
+.clearfix
+  @include clearfix()
