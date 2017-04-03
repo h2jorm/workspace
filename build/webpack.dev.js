@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
@@ -14,7 +15,7 @@ module.exports = merge(baseConfig, {
   },
   devServer: {
     hot: true,
-    contentBase: './public',
+    contentBase: path.resolve('tmp'),
     clientLogLevel: 'error',
     noInfo: true,
     proxy: { /* proxy */ },
@@ -26,5 +27,9 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(),
+      manifest: require(path.resolve('tmp/manifest.dll.json')),
+    }),
   ],
 });

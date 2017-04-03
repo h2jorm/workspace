@@ -42,10 +42,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new HtmlWebpackPlugin({
       template: './public/index.ejs',
       favicon: './public/favicon.svg',
-    })
+      NODE_ENV: process.env.NODE_ENV,
+    }),
   ]
 };

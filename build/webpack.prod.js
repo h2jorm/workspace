@@ -19,6 +19,7 @@ module.exports = merge(baseConfig, {
   output: {
     path: path.join(__dirname, '../dist'),
     filename: '[name]-[chunkhash:8].js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -32,6 +33,7 @@ module.exports = merge(baseConfig, {
     new ExtractTextPlugin({
       filename: '[name]-[contenthash:8].css',
     }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunk: (module) => {

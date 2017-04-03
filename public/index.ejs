@@ -16,5 +16,8 @@
       <div>workspace prepared</div>
     </div>
   </div>
+  <% if (htmlWebpackPlugin.options.NODE_ENV !== 'production') { %>
+  <script type="text/javascript" src="vendor.js"></script>
+  <% } %>
 </body>
 </html>

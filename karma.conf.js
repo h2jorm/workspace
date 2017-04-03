@@ -4,6 +4,7 @@ module.exports = function(config) {
     basePath: '',
 
     files: [
+      'tmp/vendor.js',
       // https://github.com/nikku/karma-browserify/issues/67#issuecomment-84281528
       { pattern: 'src/index.js', watched: false },
       { pattern: 'src/**/*.spec.js', watched: false },

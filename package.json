@@ -4,9 +4,14 @@
   "description": "basic webpack setttings out of box",
   "main": "src/index.js",
   "scripts": {
+    "prebuid:dll": "rimraf tmp",
+    "build:dll": "webpack --config ./build/webpack.dll.js",
+    "prestart": "npm run build:dll",
     "start": "NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js",
-    "release": "rimraf dist && NODE_ENV=production webpack --config ./build/webpack.prod.js",
-    "test": "NODE_ENV=testing karma start karma.conf.js"
+    "pretest": "npm run build:dll",
+    "test": "NODE_ENV=testing karma start karma.conf.js",
+    "prerelease": "rimraf dist",
+    "release": "NODE_ENV=production webpack --config ./build/webpack.prod.js"
   },
   "keywords": [
     "webpack",
