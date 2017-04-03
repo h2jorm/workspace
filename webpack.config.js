@@ -46,6 +46,16 @@ const plugins = [
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   }),
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    minChunk: (module) => {
+      return module.context && module.context.indexOf('node_modules') !== -1;
+    },
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'manifest',
+    minChunk: Infinity,
+  }),
   new webpack.LoaderOptionsPlugin({
     options: {
       postcss: [
