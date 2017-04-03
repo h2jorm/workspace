@@ -31,7 +31,7 @@ module.exports = function(config) {
         'src/**/*.spec.js': ['webpack', 'sourcemap']
     },
 
-    webpack: require('./webpack.config'),
+    webpack: require('./build/webpack.test'),
 
     webpackMiddleware: {
       stats: 'errors-only'
