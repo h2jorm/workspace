@@ -39,7 +39,6 @@ const devServer = {
 };
 
 const plugins = [
-  new webpack.HotModuleReplacementPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
   new ManifestPlugin(),
   new webpack.DefinePlugin({
@@ -72,9 +71,10 @@ const plugins = [
 ];
 
 if (IS_PROD) {
-  filename = '[name]-[hash:8].js';
+  filename = '[name]-[chunkhash:8].js';
   devtool = undefined;
   outputPath = path.join(__dirname, 'dist');
+  // extract-text-webpack-plugin does not support HotModuleReplacement
   sassLoaders.shift();
   sassLoaders = ExtractTextPlugin.extract({ use: sassLoaders });
   plugins.push(
@@ -86,6 +86,9 @@ if (IS_PROD) {
       filename: '[name]-[contenthash:8].css',
     })
   );
+} else {
+  // prevent HotModuleReplacement related error: Cannot use [chunkhash] for chunk in ... (use [hash] instead)
+  plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 module.exports = {

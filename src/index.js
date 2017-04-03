@@ -1,2 +1,2 @@
-require('./style/workspace.sass');
-require('./svg');
+import './style/workspace.sass';
+import './svg';
