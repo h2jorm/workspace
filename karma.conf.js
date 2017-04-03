@@ -4,8 +4,9 @@ module.exports = function(config) {
     basePath: '',
 
     files: [
-      'src/index.js',
-      'src/**/*.spec.js',
+      // https://github.com/nikku/karma-browserify/issues/67#issuecomment-84281528
+      { pattern: 'src/index.js', watched: false },
+      { pattern: 'src/**/*.spec.js', watched: false },
     ],
 
     autoWatch: true,
@@ -14,10 +15,13 @@ module.exports = function(config) {
 
     browsers: ['Chrome'],
 
+    client: {
+      clearContext: false,
+    },
+
     plugins: [
       'karma-chrome-launcher',
       'karma-jasmine',
-      'karma-jasmine-html-reporter',
       'karma-webpack',
       'karma-sourcemap-loader'
     ],
@@ -33,6 +37,6 @@ module.exports = function(config) {
       stats: 'errors-only'
     },
 
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress'],
   });
 };

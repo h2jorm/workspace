@@ -9,7 +9,7 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 
 let filename = '[name].js';
 let outputPath = '/';
-let devtool = "source-map";
+let devtool = "inline-source-map";
 let sassLoaders = [
   {
     loader: 'style-loader'
@@ -95,6 +95,15 @@ module.exports = {
   devServer,
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        options: {
+          presets: ['es2015', 'stage-2'],
+          plugins: ['transform-runtime'],
+        },
+      },
       {
         test: /\.html$/,
         loader: 'html-loader',
