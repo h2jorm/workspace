@@ -5,16 +5,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const baseConfig = require('./webpack.base');
 const styleLoader = require('./styleLoader');
+const config = require('./config');
 
 module.exports = merge(baseConfig, {
   entry: {
-    vendor: [
-      'whatwg-fetch',
-      'moment',
-    ],
-    bundle: [
-      './src/index.js',
-    ]
+    vendor: config.vendor,
+    bundle: config.bundle,
   },
   output: {
     path: path.join(__dirname, '../dist'),

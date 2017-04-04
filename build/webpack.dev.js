@@ -4,10 +4,11 @@ const merge = require('webpack-merge');
 
 const baseConfig = require('./webpack.base');
 const styleLoader = require('./styleLoader');
+const config = require('./config');
 
 module.exports = merge(baseConfig, {
   entry: {
-    bundle: './src/index.js',
+    bundle: config.bundle,
   },
   output: {
     path: '/',
