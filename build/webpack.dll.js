@@ -1,10 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-
-const vendor = [
-  'whatwg-fetch',
-  'moment',
-];
+const vendor = require('./config').vendor;
 
 module.exports = {
   entry: { vendor },
@@ -18,7 +14,7 @@ module.exports = {
     new webpack.DllPlugin({
       path: path.resolve('tmp/manifest.dll.json'),
       context: path.resolve('..'),
-      library: '[name]_library',
+      name: '[name]_library',
     }),
   ],
 };

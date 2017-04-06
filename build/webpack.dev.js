@@ -29,7 +29,7 @@ module.exports = merge(baseConfig, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DllReferencePlugin({
-      context: path.resolve(),
+      context: path.resolve('..'),
       manifest: require(path.resolve('tmp/manifest.dll.json')),
     }),
   ],
