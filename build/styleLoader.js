@@ -1,13 +1,13 @@
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = function(type) {
+module.exports = function(env, type) {
   const styleLoader = 'style-loader';
   const cssLoader = {
     loader: 'css-loader',
     options: {
       sourceMap: true,
-      minimize: type === 'prod',
+      minimize: env === 'prod',
     },
   };
   const postcssLoader = {
@@ -28,12 +28,24 @@ module.exports = function(type) {
       sourceMap: true,
     },
   };
-  const loader = {
+  const sassRet = {
     dev: [styleLoader, cssLoader, sassLoader],
     prod: ExtractTextPlugin.extract({ use: [cssLoader, postcssLoader, sassLoader] }),
   };
-  return {
-    test: /\.(sass|scss)$/,
-    loader: loader[type],
+  const cssRet = {
+    dev: [styleLoader, cssLoader],
+    prod: ExtractTextPlugin.extract({ use: [cssLoader, postcssLoader] }),
   };
+  switch (type) {
+    case 'sass':
+    return {
+      test: /\.(sass|scss)$/,
+      loader: sassRet[env],
+    };
+    case 'css':
+    return {
+      test: /\.css$/,
+      loader: cssRet[env],
+    };
+  }
 };

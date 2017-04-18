@@ -23,7 +23,8 @@ module.exports = merge(baseConfig, {
   },
   module: {
     rules: [
-      styleLoader('dev'),
+      styleLoader('dev', 'sass'),
+      styleLoader('dev', 'css'),
     ],
   },
   plugins: [
