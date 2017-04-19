@@ -10,12 +10,19 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
         exclude: /node_modules/,
-        options: {
-          presets: ['es2015', 'stage-2'],
-          plugins: ['transform-runtime'],
-        },
+        loader: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'stage-2'],
+              plugins: ['transform-runtime'],
+            },
+          },
+          {
+            loader: 'eslint-loader',
+          },
+        ]
       },
       {
         test: /\.html$/,

@@ -1,1 +1,1 @@
-require('./cross.svg')
+require('./cross.svg');
