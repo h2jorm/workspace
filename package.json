@@ -4,7 +4,7 @@
   "description": "basic webpack setttings out of box",
   "main": "src/index.js",
   "scripts": {
-    "prebuid:dll": "rimraf tmp",
+    "prebuild:dll": "rimraf tmp",
     "build:dll": "webpack --config ./build/webpack.dll.js",
     "prestart": "npm run build:dll",
     "start": "NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js",
