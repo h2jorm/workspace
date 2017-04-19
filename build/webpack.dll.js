@@ -3,7 +3,7 @@ const path = require('path');
 const vendor = require('./config').vendor;
 
 module.exports = {
-  entry: { vendor },
+  entry: {vendor},
   output: {
     path: path.resolve('tmp'),
     filename: '[name].js',

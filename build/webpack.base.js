@@ -1,6 +1,4 @@
 const webpack = require('webpack');
-const path = require('path');
-const autoprefixer = require('autoprefixer');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -22,19 +20,19 @@ module.exports = {
           {
             loader: 'eslint-loader',
           },
-        ]
+        ],
       },
       {
         test: /\.html$/,
         loader: 'html-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(jpg|jpeg|png|gif)$/,
         loader: 'url-loader',
         options: {
           limit: 1000,
-          name: 'images/[name]-[hash:8].[ext]'
+          name: 'images/[name]-[hash:8].[ext]',
         },
       },
       {
@@ -54,5 +52,5 @@ module.exports = {
       favicon: './public/favicon.svg',
       NODE_ENV: process.env.NODE_ENV,
     }),
-  ]
+  ],
 };

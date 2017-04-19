@@ -16,8 +16,8 @@ module.exports = function(env, type) {
       plugins() {
         return [
           autoprefixer({
-            browsers: ['last 2 versions']
-          })
+            browsers: ['last 2 versions'],
+          }),
         ];
       },
     },
@@ -30,11 +30,15 @@ module.exports = function(env, type) {
   };
   const sassRet = {
     dev: [styleLoader, cssLoader, sassLoader],
-    prod: ExtractTextPlugin.extract({ use: [cssLoader, postcssLoader, sassLoader] }),
+    prod: ExtractTextPlugin.extract({
+      use: [cssLoader, postcssLoader, sassLoader],
+    }),
   };
   const cssRet = {
     dev: [styleLoader, cssLoader],
-    prod: ExtractTextPlugin.extract({ use: [cssLoader, postcssLoader] }),
+    prod: ExtractTextPlugin.extract({
+      use: [cssLoader, postcssLoader],
+    }),
   };
   switch (type) {
     case 'sass':
