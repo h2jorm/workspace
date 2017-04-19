@@ -1,13 +1,14 @@
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = function(env, type) {
+module.exports = function(type) {
+  const {NODE_ENV} = process.env;
   const styleLoader = 'style-loader';
   const cssLoader = {
     loader: 'css-loader',
     options: {
       sourceMap: true,
-      minimize: env === 'prod',
+      minimize: NODE_ENV === 'production',
     },
   };
   const postcssLoader = {
@@ -28,28 +29,26 @@ module.exports = function(env, type) {
       sourceMap: true,
     },
   };
-  const sassRet = {
-    dev: [styleLoader, cssLoader, sassLoader],
-    prod: ExtractTextPlugin.extract({
+  let sass = [styleLoader, cssLoader, sassLoader];
+  let css = [styleLoader, cssLoader];
+  if (NODE_ENV === 'production') {
+    sass = ExtractTextPlugin.extract({
       use: [cssLoader, postcssLoader, sassLoader],
-    }),
-  };
-  const cssRet = {
-    dev: [styleLoader, cssLoader],
-    prod: ExtractTextPlugin.extract({
+    });
+    css = ExtractTextPlugin.extract({
       use: [cssLoader, postcssLoader],
-    }),
-  };
+    });
+  }
   switch (type) {
     case 'sass':
     return {
       test: /\.(sass|scss)$/,
-      loader: sassRet[env],
+      loader: sass,
     };
     case 'css':
     return {
       test: /\.css$/,
-      loader: cssRet[env],
+      loader: css,
     };
   }
 };

@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 const baseConfig = require('./webpack.base');
-const styleLoader = require('./styleLoader');
 const config = require('./config');
 
 module.exports = merge(baseConfig, {
@@ -20,12 +19,6 @@ module.exports = merge(baseConfig, {
     clientLogLevel: 'error',
     noInfo: true,
     proxy: { /* proxy */ },
-  },
-  module: {
-    rules: [
-      styleLoader('dev', 'sass'),
-      styleLoader('dev', 'css'),
-    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

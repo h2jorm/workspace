@@ -4,7 +4,6 @@ const merge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const baseConfig = require('./webpack.base');
-const styleLoader = require('./styleLoader');
 const config = require('./config');
 
 module.exports = merge(baseConfig, {
@@ -16,12 +15,6 @@ module.exports = merge(baseConfig, {
     path: path.join(__dirname, '../dist'),
     filename: '[name]-[chunkhash:8].js',
     publicPath: '/',
-  },
-  module: {
-    rules: [
-      styleLoader('prod', 'sass'),
-      styleLoader('prod', 'css'),
-    ],
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({

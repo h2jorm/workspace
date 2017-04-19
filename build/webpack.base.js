@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const styleLoader = require('./styleLoader');
+
 module.exports = {
   devtool: 'source-map',
   module: {
@@ -39,6 +41,8 @@ module.exports = {
         test: /\.svg$/,
         loader: ['svg-sprite-loader'],
       },
+      styleLoader('sass'),
+      styleLoader('css'),
     ],
   },
   plugins: [
