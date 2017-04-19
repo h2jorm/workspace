@@ -6,8 +6,8 @@ module.exports = function(config) {
     files: [
       'tmp/vendor.js',
       // https://github.com/nikku/karma-browserify/issues/67#issuecomment-84281528
-      { pattern: 'src/index.js', watched: false },
-      { pattern: 'src/**/*.spec.js', watched: false },
+      {pattern: 'src/index.js', watched: false},
+      {pattern: 'src/**/*.spec.js', watched: false},
     ],
 
     autoWatch: true,
@@ -24,20 +24,21 @@ module.exports = function(config) {
       'karma-chrome-launcher',
       'karma-jasmine',
       'karma-webpack',
-      'karma-sourcemap-loader'
+      'karma-sourcemap-loader',
+      'karma-jasmine-html-reporter',
     ],
 
     preprocessors: {
         'src/index.js': ['webpack', 'sourcemap'],
-        'src/**/*.spec.js': ['webpack', 'sourcemap']
+        'src/**/*.spec.js': ['webpack', 'sourcemap'],
     },
 
     webpack: require('./build/webpack.test'),
 
     webpackMiddleware: {
-      stats: 'errors-only'
+      stats: 'errors-only',
     },
 
-    reporters: ['progress'],
+    reporters: ['progress', 'kjhtml'],
   });
 };
