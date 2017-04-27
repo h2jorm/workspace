@@ -1,5 +1,7 @@
+import {hello} from './index';
+
 describe('workspace', () => {
   it('should pass test', () => {
-    expect(true).toBeTruthy();
+    expect(hello()).toBe('hello');
   });
 });

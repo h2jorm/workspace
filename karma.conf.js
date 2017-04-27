@@ -26,6 +26,7 @@ module.exports = function(config) {
       'karma-webpack',
       'karma-sourcemap-loader',
       'karma-jasmine-html-reporter',
+      'karma-coverage-istanbul-reporter',
     ],
 
     preprocessors: {
@@ -39,6 +40,12 @@ module.exports = function(config) {
       stats: 'errors-only',
     },
 
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'coverage-istanbul'],
+
+    coverageIstanbulReporter: {
+        reports: ['html'],
+        dir: 'coverage/',
+        fixWebpackSourcePaths: true,
+    },
   });
 };
