@@ -6,7 +6,7 @@ const config = merge(devConfig, {
 });
 
 config.module.rules.unshift({
-  test: /(?!\.spec)\.js$/,
+  test: /^(?!.*\.spec\.js$).*\.js$/,
   exclude: /node_modules/,
   loader: 'istanbul-instrumenter-loader',
 });

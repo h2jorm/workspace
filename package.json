@@ -6,6 +6,7 @@
   "scripts": {
     "prebuild:dll": "rimraf tmp",
     "build:dll": "webpack --config ./build/webpack.dll.js",
+    "coverage": "npm run test -- --single-run",
     "prestart": "npm run build:dll",
     "start": "NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.js",
     "pretest": "npm run build:dll",
