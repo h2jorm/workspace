@@ -39,16 +39,18 @@ module.exports = function(type) {
       use: [cssLoader, postcssLoader],
     });
   }
+  // ignore css in testing environment
+  const IS_TESTING = NODE_ENV === 'testing';
   switch (type) {
     case 'sass':
     return {
       test: /\.(sass|scss)$/,
-      loader: sass,
+      loader: IS_TESTING ? 'null-loader' : sass,
     };
     case 'css':
     return {
       test: /\.css$/,
-      loader: css,
+      loader: IS_TESTING ? 'null-loader' : css,
     };
   }
 };
