@@ -4,8 +4,8 @@ module.exports = function(config) {
     basePath: '',
 
     files: [
-      {pattern: 'tmp/*', included: false, watched: false},
       {pattern: 'tmp/vendor.js', included: true},
+      {pattern: 'tmp/*', included: false, watched: false},
       // https://github.com/nikku/karma-browserify/issues/67#issuecomment-84281528
       {pattern: 'src/index.js', watched: false},
       {pattern: 'src/**/*.spec.js', watched: false},
@@ -39,6 +39,7 @@ module.exports = function(config) {
 
     webpackMiddleware: {
       stats: 'errors-only',
+      noInfo: true,
     },
 
     reporters: ['progress', 'kjhtml', 'coverage-istanbul'],
