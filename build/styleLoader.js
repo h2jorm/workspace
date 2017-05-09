@@ -14,6 +14,7 @@ module.exports = function(type) {
   const postcssLoader = {
     loader: 'postcss-loader',
     options: {
+      sourceMap: true,
       plugins() {
         return [
           autoprefixer({

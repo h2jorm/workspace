@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: ['svg-sprite-loader'],
+        loader: 'svg-sprite-loader',
       },
       styleLoader('sass'),
       styleLoader('css'),
