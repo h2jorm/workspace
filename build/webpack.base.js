@@ -53,7 +53,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.ejs',
-      favicon: './public/favicon.svg',
+      favicon: './public/favicon.ico',
       NODE_ENV: process.env.NODE_ENV,
     }),
   ],

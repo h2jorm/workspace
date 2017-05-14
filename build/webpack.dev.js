@@ -17,6 +17,7 @@ module.exports = merge(baseConfig, {
     hot: true,
     contentBase: path.resolve('tmp'),
     clientLogLevel: 'error',
+    noInfo: true,
     proxy: { /* proxy */ },
   },
   plugins: [
