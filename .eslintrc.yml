@@ -1,7 +1,8 @@
-ecmaFeatures:
-  modules: true
-  jsx: true
-parser: "babel-eslint"
+parserOptions:
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+parser: babel-eslint
 extends: google
 env:
   es6: true

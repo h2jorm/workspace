@@ -31,8 +31,8 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-        'src/index.js': ['webpack', 'sourcemap'],
-        'src/**/*.spec.js': ['webpack', 'sourcemap'],
+      'src/index.js': ['webpack', 'sourcemap'],
+      'src/**/*.spec.js': ['webpack', 'sourcemap'],
     },
 
     webpack: require('./build/webpack.test'),
@@ -45,9 +45,9 @@ module.exports = function(config) {
     reporters: ['progress', 'kjhtml', 'coverage-istanbul'],
 
     coverageIstanbulReporter: {
-        reports: ['html'],
-        dir: 'coverage/',
-        fixWebpackSourcePaths: true,
+      reports: ['html'],
+      dir: 'coverage/',
+      fixWebpackSourcePaths: true,
     },
   });
 };
